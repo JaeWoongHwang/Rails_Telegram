@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RailsTelegram</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+  <body>
+  <a href="/">HOME</a>
+  <% unless current_user %>
+  <a href="/users/sign_up">SIGN UP</a>
+  <a href="/users/log_in">LOG IN</a>
+  <% else %>
+  <a href="/users/log_out">LOG OUT</a>
+  <!-- session에 user_id가 있으면 user_id를 출력하겠다 -->
+  <!-- <p>Welcoming <%=session[:user_id] if session[:user_id]%></p> -->
+  <p>Welcoming <%= current_user.email %></p>
+  <% end %>
+
+<%= yield %>
+
+  </body>
+</html>

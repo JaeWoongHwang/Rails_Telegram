@@ -1,0 +1,15 @@
+<h1>Send message to telegram</h1>
+<p>Input your messages</p>
+<form action="/messages/send_msg" >
+  Message : <input type="text" name = "msg">
+  <input type="submit" value = "SUBMIT">
+</form>
+<h2>Message List</h2>
+  <%@msg_list.each do |msg|%>
+    <p>
+      <%=msg.user.email%> |
+      <%=msg.content%> |
+      <%=time_ago_in_words(msg.created_at)%>
+    </p>
+    <!-- <p><%=time_ago_in_words(msg.created_at)[0] + "minutes ago"%></p> -->
+  <%end%>
